@@ -28,32 +28,9 @@ namespace WindowsFormsControlLibrary1
             //lines.Add(new Line(new Point(30, 20), new Point(10, 40)));
         }
 
-        private void sevenButton_Click(object sender, EventArgs e)
-        {
 
-        }
 
         private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -83,11 +60,6 @@ namespace WindowsFormsControlLibrary1
                     e.Graphics.DrawEllipse(pen, intersection.X -  10, intersection.Y - 10, 20, 20);
                 }
             }
-        }
-
-        private void textBox1_TextChanged_1(object sender, EventArgs e)
-        {
-
         }
 
         //using intersection law of two lines from four points
@@ -136,42 +108,6 @@ namespace WindowsFormsControlLibrary1
             this.Refresh();
         }
 
-        private void addButton_Click(object sender, EventArgs e)
-        {
-            //To Do: add error handling   
-            System.Diagnostics.Debug.WriteLine("Added");
-            if (string.IsNullOrWhiteSpace(firstXBox.Text) || string.IsNullOrWhiteSpace(firstYBox.Text) 
-                || string.IsNullOrWhiteSpace(secondXBox.Text) || string.IsNullOrWhiteSpace(secondYBox.Text))
-            {
-                MessageBox.Show("Points cannot be empty", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (!firstXBox.Text.All(Char.IsDigit) || !firstXBox.Text.All(Char.IsDigit)
-                || !secondXBox.Text.All(Char.IsDigit) || !secondYBox.Text.All(Char.IsDigit))
-            {
-                MessageBox.Show("Enter digits only", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            int firstX = (int)Math.Round(float.Parse(firstXBox.Text));
-            int firstY = (int)Math.Round(float.Parse(firstYBox.Text));
-            int secondX = (int)Math.Round(float.Parse(secondXBox.Text));
-            int secondY = (int)Math.Round(float.Parse(secondYBox.Text));
-
-            Point point1 = new Point(firstX, firstY);
-            Point point2 = new Point(secondX, secondY);
-            lines.Add(new Line(point1, point2, colorButton.ForeColor));
-
-            //add to list
-            ListViewItem item = new ListViewItem();
-            item.Text = "First point (x=" + firstX + ",y=" + firstY + ") Second point (x=" + secondX + ",y=" + secondY+")";
-            linesView.Items.Add(item);
-
-            //this.Invalidate();
-            this.Refresh();
-        }
-
         private void colorButton_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Debug.WriteLine("on color button clicked");
@@ -194,76 +130,15 @@ namespace WindowsFormsControlLibrary1
 
         }
 
-        private void linesView_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // Get the index of the selected item
-            int selectedIndex = linesView.SelectedIndices.Count > 0 ? linesView.SelectedIndices[0] : -1;
-
-            // Check if selected item is in lines list
-            if (selectedIndex >= 0 && selectedIndex < lines.Count)
-            {
-                //update the textboxes and color button color
-                firstXBox.Text = lines.ElementAt(selectedIndex).Point1.X.ToString();
-                firstYBox.Text = lines.ElementAt(selectedIndex).Point1.Y.ToString();
-                secondXBox.Text = lines.ElementAt(selectedIndex).Point2.X.ToString();
-                secondYBox.Text = lines.ElementAt(selectedIndex).Point2.Y.ToString();
-                colorButton.ForeColor = lines.ElementAt(selectedIndex).Color;
-            }
-            //ToDo add error handling code in this case the else should never be reached
-        }
-
         private void removeButton_Click(object sender, EventArgs e)
         {
-            lines.Remove(lines[dataGridView1.CurrentRow.Index]);
-            dataGridView1.Rows.Remove(dataGridView1.CurrentRow);
-            Refresh();
-        }
-
-        //the implementation is based on keeping the list in the same order as our internal line list
-        //To Do: add error messages
-        private void removeButton_Click2(object sender, EventArgs e)
-        {
-            // Get the index of the selected item
-            int selectedIndex = linesView.SelectedIndices.Count > 0 ? linesView.SelectedIndices[0] : -1;
-
-            // Check if an item is selected and if so remove it from both our lists
-            if (selectedIndex != -1)
+            int index = dataGridView1.CurrentRow.Index;
+            if (index < lines.Count)
             {
-                System.Diagnostics.Debug.WriteLine("Selected index: " + selectedIndex);
-                linesView.Items.RemoveAt(selectedIndex);
-                // Check if the target index exists if not check the one before it
-                if (selectedIndex >= 0 && selectedIndex < linesView.Items.Count)
-                {
-                    // Select the item at the target index
-                    linesView.Items[selectedIndex].Selected = true;
-                    linesView.Select(); // set focus to it
-                } else if (selectedIndex - 1 >=0 && selectedIndex < linesView.Items.Count)
-                {
-                    linesView.Items[selectedIndex - 1].Selected = true;
-                    linesView.Select(); // set focus to it
-                }
-                lines.RemoveAt(selectedIndex);
-                //call intersection calculations but first remove all intersections
-                intersections.Clear();
-                findIntersectionsButton_Click(sender, e);
-                //update the drawing
-                this.Refresh();
+                lines.Remove(lines[index]);
+                dataGridView1.Rows.Remove(dataGridView1.CurrentRow);
+                Refresh();
             }
-        }
-
-        private void updateButton_Click(object sender, EventArgs e)
-        {
-            //update the coordinates with current coordinates and update color with current color
-            int selectedIndex = linesView.SelectedIndices.Count > 0 ? linesView.SelectedIndices[0] : -1;
-            if (selectedIndex >= 0 && selectedIndex < lines.Count)
-            {
-                lines.ElementAt(selectedIndex).Point1 = new Point(int.Parse(firstXBox.Text), int.Parse(firstYBox.Text));
-                lines.ElementAt(selectedIndex).Point2 = new Point(int.Parse(secondXBox.Text), int.Parse(secondYBox.Text));
-                if (colorButton.ForeColor != lines.ElementAt(selectedIndex).Color)
-                    lines.ElementAt(selectedIndex).Color = colorButton.ForeColor;
-            }
-            //update the drawing
-            this.Refresh();
         }
 
         private void splitContainer1_Panel1_Click(object sender, EventArgs e)
@@ -283,12 +158,6 @@ namespace WindowsFormsControlLibrary1
                 lines.Add(new Line(clickedPoint1, clickedPoint2, colorButton.ForeColor));
 
                 dataGridView1.Rows.Add(clickedPoint1.X, clickedPoint1.Y, clickedPoint2.X, clickedPoint2.Y);
-                //add to list
-                //ListViewItem item = new ListViewItem();
-                //item.Text = "First point (x=" + clickedPoint1.X + ",y=" + clickedPoint1.Y + ") Second point (x=" + clickedPoint2.X + ",y=" + clickedPoint2.Y + ")";
-                //linesView.Items.Add(item);
-
-                //this.Invalidate();
                 this.Refresh();
             }
         }
@@ -361,12 +230,6 @@ namespace WindowsFormsControlLibrary1
                 lines[e.RowIndex] = new Line(point1, point2, lineColor);
             }
 
-            //add to list
-            //ListViewItem item = new ListViewItem();
-            //item.Text = "First point (x=" + firstX + ",y=" + firstY + ") Second point (x=" + secondX + ",y=" + secondY + ")";
-            //linesView.Items.Add(item);
-
-            //this.Invalidate();
             this.Refresh();
         }
 
