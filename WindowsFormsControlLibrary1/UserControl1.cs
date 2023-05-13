@@ -172,7 +172,8 @@ namespace WindowsFormsControlLibrary1
             {
                 Color c = onColorCellClick();
                 dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[dataGridView1.CurrentCell.ColumnIndex].Style.BackColor = c;
-                lines[dataGridView1.CurrentCell.RowIndex].Color = c;
+                if(dataGridView1.CurrentCell.RowIndex >= 0 && dataGridView1.CurrentCell.RowIndex < lines.Count)
+                    lines[dataGridView1.CurrentCell.RowIndex].Color = c;
                 Refresh();
             }
         }
