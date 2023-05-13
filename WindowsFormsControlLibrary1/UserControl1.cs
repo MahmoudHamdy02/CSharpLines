@@ -14,10 +14,14 @@ namespace WindowsFormsControlLibrary1
     public partial class UserControl1: UserControl
     {
         private List<Line> lines = new List<Line>();
+        private bool clickedOnce;
+        private Point clickedPoint1;
+        private Point clickedPoint2;
         public UserControl1()
         {
             InitializeComponent();
             Paint += splitContainer1_Panel1_Paint;
+            //this.Controls.Add(splitContainer1.Panel1);
             //lines.Add(new Line(new Point(30, 20), new Point(10, 40)));
         }
 
@@ -188,6 +192,32 @@ namespace WindowsFormsControlLibrary1
             }
             //update the drawing
             this.Refresh();
+        }
+
+        private void splitContainer1_Panel1_Click(object sender, EventArgs e)
+        {
+
+            if (!clickedOnce)
+            {
+                clickedPoint1 = splitContainer1.Panel1.PointToClient(Cursor.Position);
+                System.Diagnostics.Debug.WriteLine("once");
+                clickedOnce = true;
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("Added");
+                clickedPoint2 = splitContainer1.Panel1.PointToClient(Cursor.Position);
+                clickedOnce = false;
+                lines.Add(new Line(clickedPoint1, clickedPoint2, colorButton.ForeColor));
+
+                //add to list
+                ListViewItem item = new ListViewItem();
+                item.Text = "First point (x=" + clickedPoint1.X + ",y=" + clickedPoint1.Y + ") Second point (x=" + clickedPoint2.X + ",y=" + clickedPoint2.Y + ")";
+                linesView.Items.Add(item);
+
+                //this.Invalidate();
+                this.Refresh();
+            }
         }
     }
 

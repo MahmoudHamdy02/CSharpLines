@@ -60,14 +60,15 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Click += new System.EventHandler(this.splitContainer1_Panel1_Click);
             this.splitContainer1.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel1_Paint);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel1);
             this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
-            this.splitContainer1.Size = new System.Drawing.Size(993, 469);
-            this.splitContainer1.SplitterDistance = 627;
+            this.splitContainer1.Size = new System.Drawing.Size(1158, 577);
+            this.splitContainer1.SplitterDistance = 731;
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -102,17 +103,17 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 76F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(359, 465);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(420, 573);
             this.tableLayoutPanel1.TabIndex = 0;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // colorButton
             // 
             this.colorButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.colorButton.Location = new System.Drawing.Point(3, 76);
+            this.colorButton.Location = new System.Drawing.Point(3, 92);
             this.colorButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.colorButton.Name = "colorButton";
-            this.colorButton.Size = new System.Drawing.Size(65, 33);
+            this.colorButton.Size = new System.Drawing.Size(78, 41);
             this.colorButton.TabIndex = 1;
             this.colorButton.Text = "Color";
             this.colorButton.UseVisualStyleBackColor = true;
@@ -121,10 +122,10 @@
             // updateButton
             // 
             this.updateButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.updateButton.Location = new System.Drawing.Point(74, 76);
+            this.updateButton.Location = new System.Drawing.Point(87, 92);
             this.updateButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.updateButton.Name = "updateButton";
-            this.updateButton.Size = new System.Drawing.Size(65, 33);
+            this.updateButton.Size = new System.Drawing.Size(78, 41);
             this.updateButton.TabIndex = 1;
             this.updateButton.Text = "Update";
             this.updateButton.UseVisualStyleBackColor = true;
@@ -133,10 +134,10 @@
             // removeButton
             // 
             this.removeButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.removeButton.Location = new System.Drawing.Point(145, 76);
+            this.removeButton.Location = new System.Drawing.Point(171, 92);
             this.removeButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.removeButton.Name = "removeButton";
-            this.removeButton.Size = new System.Drawing.Size(65, 33);
+            this.removeButton.Size = new System.Drawing.Size(78, 41);
             this.removeButton.TabIndex = 2;
             this.removeButton.Text = "Remove";
             this.removeButton.UseVisualStyleBackColor = true;
@@ -146,10 +147,10 @@
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.findIntersectionsButton, 2);
             this.findIntersectionsButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.findIntersectionsButton.Location = new System.Drawing.Point(216, 76);
+            this.findIntersectionsButton.Location = new System.Drawing.Point(255, 92);
             this.findIntersectionsButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.findIntersectionsButton.Name = "findIntersectionsButton";
-            this.findIntersectionsButton.Size = new System.Drawing.Size(140, 33);
+            this.findIntersectionsButton.Size = new System.Drawing.Size(162, 41);
             this.findIntersectionsButton.TabIndex = 3;
             this.findIntersectionsButton.Text = "Find Intersections";
             this.findIntersectionsButton.UseVisualStyleBackColor = true;
@@ -158,11 +159,11 @@
             // addButton
             // 
             this.addButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.addButton.Location = new System.Drawing.Point(287, 2);
+            this.addButton.Location = new System.Drawing.Point(339, 2);
             this.addButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.addButton.Name = "addButton";
             this.tableLayoutPanel1.SetRowSpan(this.addButton, 2);
-            this.addButton.Size = new System.Drawing.Size(69, 70);
+            this.addButton.Size = new System.Drawing.Size(78, 86);
             this.addButton.TabIndex = 5;
             this.addButton.Text = "Add";
             this.addButton.UseVisualStyleBackColor = true;
@@ -173,59 +174,59 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(36, 13);
+            this.label1.Size = new System.Drawing.Size(45, 17);
             this.label1.TabIndex = 6;
             this.label1.Text = "First X";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(145, 0);
+            this.label3.Location = new System.Drawing.Point(171, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 13);
+            this.label3.Size = new System.Drawing.Size(66, 17);
             this.label3.TabIndex = 8;
             this.label3.Text = "Second X";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(145, 37);
+            this.label4.Location = new System.Drawing.Point(171, 45);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(54, 13);
+            this.label4.Size = new System.Drawing.Size(66, 17);
             this.label4.TabIndex = 9;
             this.label4.Text = "Second Y";
             // 
             // firstXBox
             // 
-            this.firstXBox.Location = new System.Drawing.Point(74, 2);
+            this.firstXBox.Location = new System.Drawing.Point(87, 2);
             this.firstXBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.firstXBox.Name = "firstXBox";
-            this.firstXBox.Size = new System.Drawing.Size(65, 20);
+            this.firstXBox.Size = new System.Drawing.Size(75, 24);
             this.firstXBox.TabIndex = 10;
             this.firstXBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             // 
             // firstYBox
             // 
-            this.firstYBox.Location = new System.Drawing.Point(74, 39);
+            this.firstYBox.Location = new System.Drawing.Point(87, 47);
             this.firstYBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.firstYBox.Name = "firstYBox";
-            this.firstYBox.Size = new System.Drawing.Size(65, 20);
+            this.firstYBox.Size = new System.Drawing.Size(75, 24);
             this.firstYBox.TabIndex = 10;
             // 
             // secondXBox
             // 
-            this.secondXBox.Location = new System.Drawing.Point(216, 2);
+            this.secondXBox.Location = new System.Drawing.Point(255, 2);
             this.secondXBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.secondXBox.Name = "secondXBox";
-            this.secondXBox.Size = new System.Drawing.Size(65, 20);
+            this.secondXBox.Size = new System.Drawing.Size(75, 24);
             this.secondXBox.TabIndex = 10;
             // 
             // secondYBox
             // 
-            this.secondYBox.Location = new System.Drawing.Point(216, 39);
+            this.secondYBox.Location = new System.Drawing.Point(255, 47);
             this.secondYBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.secondYBox.Name = "secondYBox";
-            this.secondYBox.Size = new System.Drawing.Size(65, 20);
+            this.secondYBox.Size = new System.Drawing.Size(75, 24);
             this.secondYBox.TabIndex = 10;
             // 
             // linesView
@@ -233,11 +234,11 @@
             this.tableLayoutPanel1.SetColumnSpan(this.linesView, 5);
             this.linesView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.linesView.HideSelection = false;
-            this.linesView.Location = new System.Drawing.Point(3, 113);
+            this.linesView.Location = new System.Drawing.Point(3, 137);
             this.linesView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.linesView.MultiSelect = false;
             this.linesView.Name = "linesView";
-            this.linesView.Size = new System.Drawing.Size(353, 350);
+            this.linesView.Size = new System.Drawing.Size(414, 434);
             this.linesView.TabIndex = 11;
             this.linesView.UseCompatibleStateImageBehavior = false;
             this.linesView.View = System.Windows.Forms.View.List;
@@ -246,20 +247,20 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 37);
+            this.label2.Location = new System.Drawing.Point(3, 45);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(36, 13);
+            this.label2.Size = new System.Drawing.Size(45, 17);
             this.label2.TabIndex = 7;
             this.label2.Text = "First Y";
             // 
             // UserControl1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.splitContainer1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "UserControl1";
-            this.Size = new System.Drawing.Size(993, 469);
+            this.Size = new System.Drawing.Size(1158, 577);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
