@@ -1,0 +1,8 @@
+C:\Users\Mohamed\Documents\GitHub\CSharpLines\WindowsFormsControlLibrary1\bin\Release\WindowsFormsControlLibrary1.dll
+C:\Users\Mohamed\Documents\GitHub\CSharpLines\WindowsFormsControlLibrary1\bin\Release\WindowsFormsControlLibrary1.pdb
+C:\Users\Mohamed\Documents\GitHub\CSharpLines\WindowsFormsControlLibrary1\obj\Release\WindowsFormsControlLibrary1.csproj.AssemblyReference.cache
+C:\Users\Mohamed\Documents\GitHub\CSharpLines\WindowsFormsControlLibrary1\obj\Release\WindowsFormsControlLibrary1.UserControl1.resources
+C:\Users\Mohamed\Documents\GitHub\CSharpLines\WindowsFormsControlLibrary1\obj\Release\WindowsFormsControlLibrary1.csproj.GenerateResource.cache
+C:\Users\Mohamed\Documents\GitHub\CSharpLines\WindowsFormsControlLibrary1\obj\Release\WindowsFormsControlLibrary1.csproj.CoreCompileInputs.cache
+C:\Users\Mohamed\Documents\GitHub\CSharpLines\WindowsFormsControlLibrary1\obj\Release\WindowsFormsControlLibrary1.dll
+C:\Users\Mohamed\Documents\GitHub\CSharpLines\WindowsFormsControlLibrary1\obj\Release\WindowsFormsControlLibrary1.pdb

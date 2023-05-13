@@ -16,6 +16,7 @@ namespace WindowsFormsControlLibrary1
         private List<Line> lines = new List<Line>();
         HashSet<Point> intersections = new HashSet<Point>();
         private bool drawIntersections = false;
+        private bool intersectionsDrawn = false;
         private bool clickedOnce;
         private Point clickedPoint1;
         private Point clickedPoint2;
@@ -41,6 +42,7 @@ namespace WindowsFormsControlLibrary1
             {
                 //reset pen color to default black color
                 pen.Color = Color.Black;
+                intersectionsDrawn = intersections.Count > 0;
                 foreach (Point intersection in intersections)
                 {
                     e.Graphics.DrawEllipse(pen, intersection.X -  10, intersection.Y - 10, 20, 20);
@@ -124,7 +126,7 @@ namespace WindowsFormsControlLibrary1
                 lines.Remove(lines[index]);
                 dataGridView1.Rows.Remove(dataGridView1.CurrentRow);
                 //re calculate intersections
-                if (drawIntersections)
+                if (intersectionsDrawn)
                 {
                     intersections = new HashSet<Point>();
                     findIntersectionsButton_Click(sender, e);
