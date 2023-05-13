@@ -14,6 +14,8 @@ namespace WindowsFormsControlLibrary1
     public partial class UserControl1: UserControl
     {
         private List<Line> lines = new List<Line>();
+        HashSet<Point> intersections = new HashSet<Point>();
+        private bool drawIntersections = false;
         private bool clickedOnce;
         private Point clickedPoint1;
         private Point clickedPoint2;
@@ -73,6 +75,15 @@ namespace WindowsFormsControlLibrary1
                     pen.Color = line.Color;
                 e.Graphics.DrawLine(pen, line.Point1, line.Point2);
             }
+            //draw intersection if draw intersection was pressed
+            if (drawIntersections)
+            {
+                foreach (Point intersection in intersections)
+                {
+                    //ToDO: maybe make 10 a function in window width
+                    e.Graphics.DrawEllipse(pen, intersection.X, intersection.Y, 10, 10);
+                }
+            }
 
             //Point p1 = new Point(10, 10);
             //Point p2 = new Point(50, 50);
@@ -84,9 +95,40 @@ namespace WindowsFormsControlLibrary1
 
         }
 
+        //using intersection law of two lines from four points
         private void findIntersectionsButton_Click(object sender, EventArgs e)
         {
-
+            if (!drawIntersections)
+                drawIntersections = true;
+            //naive o(n^2) solution where we try all combinations to find intersections
+            for (int i=0; i<lines.Count; ++i)
+            {
+                //extract our lines points
+                Point point1 = lines.ElementAt(i).Point1;
+                Point point2 = lines.ElementAt(i).Point2;
+                //check against all others (that weren't checked) if there is an intersection
+                for (int j = i+ 1; j < lines.Count; j++)
+                {
+                    Point point3 = lines.ElementAt(j).Point1;
+                    Point point4 = lines.ElementAt(j).Point2;
+                    //check if parallel or coincident... denom is zero
+                    int denom = ((point1.X - point2.X) * (point3.Y - point4.Y)) - ((point1.Y - point2.Y) * (point3.X - point4.X));
+                    if (denom > 0)
+                    {
+                        //we have an intersection store it but first calc numerator1 and two
+                        int numeratorX = (
+                                          ((point1.X * point2.Y) - (point1.Y * point2.X)) * (point3.X - point4.X)) -
+                                          ((point1.X - point2.X) * ((point3.X * point4.Y) - (point3.Y * point4.X))
+                                          );
+                        int numeratorY = (
+                                          ((point1.X * point2.Y) - (point1.Y * point2.X)) * (point3.Y - point4.Y)) -
+                                          ((point1.Y - point2.Y) * ((point3.X * point4.Y) - (point3.Y * point4.X))
+                                          );
+                        intersections.Add(new Point((numeratorX / denom), (numeratorY / denom)));
+                    }
+                }
+            }
+            this.Refresh();
         }
 
         private void addButton_Click(object sender, EventArgs e)
