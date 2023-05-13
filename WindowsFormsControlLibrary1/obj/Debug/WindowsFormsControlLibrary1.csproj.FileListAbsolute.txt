@@ -6,3 +6,11 @@ C:\Users\ComputerShop\source\repos\WindowsFormsControlLibrary1\WindowsFormsContr
 C:\Users\ComputerShop\source\repos\WindowsFormsControlLibrary1\WindowsFormsControlLibrary1\obj\Debug\WindowsFormsControlLibrary1.csproj.CoreCompileInputs.cache
 C:\Users\ComputerShop\source\repos\WindowsFormsControlLibrary1\WindowsFormsControlLibrary1\obj\Debug\WindowsFormsControlLibrary1.dll
 C:\Users\ComputerShop\source\repos\WindowsFormsControlLibrary1\WindowsFormsControlLibrary1\obj\Debug\WindowsFormsControlLibrary1.pdb
+C:\Users\Mohamed\Documents\GitHub\CSharpLines\WindowsFormsControlLibrary1\bin\Debug\WindowsFormsControlLibrary1.dll
+C:\Users\Mohamed\Documents\GitHub\CSharpLines\WindowsFormsControlLibrary1\bin\Debug\WindowsFormsControlLibrary1.pdb
+C:\Users\Mohamed\Documents\GitHub\CSharpLines\WindowsFormsControlLibrary1\obj\Debug\WindowsFormsControlLibrary1.csproj.AssemblyReference.cache
+C:\Users\Mohamed\Documents\GitHub\CSharpLines\WindowsFormsControlLibrary1\obj\Debug\WindowsFormsControlLibrary1.UserControl1.resources
+C:\Users\Mohamed\Documents\GitHub\CSharpLines\WindowsFormsControlLibrary1\obj\Debug\WindowsFormsControlLibrary1.csproj.GenerateResource.cache
+C:\Users\Mohamed\Documents\GitHub\CSharpLines\WindowsFormsControlLibrary1\obj\Debug\WindowsFormsControlLibrary1.csproj.CoreCompileInputs.cache
+C:\Users\Mohamed\Documents\GitHub\CSharpLines\WindowsFormsControlLibrary1\obj\Debug\WindowsFormsControlLibrary1.dll
+C:\Users\Mohamed\Documents\GitHub\CSharpLines\WindowsFormsControlLibrary1\obj\Debug\WindowsFormsControlLibrary1.pdb
