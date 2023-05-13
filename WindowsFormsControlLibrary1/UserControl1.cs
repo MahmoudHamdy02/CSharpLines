@@ -93,10 +93,25 @@ namespace WindowsFormsControlLibrary1
         {
             //To Do: add error handling   
             System.Diagnostics.Debug.WriteLine("Added");
-            int firstX = int.Parse(firstXBox.Text);
-            int firstY = int.Parse(firstYBox.Text);
-            int secondX = int.Parse(secondXBox.Text);
-            int secondY = int.Parse(secondYBox.Text);
+            if (string.IsNullOrWhiteSpace(firstXBox.Text) || string.IsNullOrWhiteSpace(firstYBox.Text) 
+                || string.IsNullOrWhiteSpace(secondXBox.Text) || string.IsNullOrWhiteSpace(secondYBox.Text))
+            {
+                MessageBox.Show("Points cannot be empty", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!firstXBox.Text.All(Char.IsDigit) || !firstXBox.Text.All(Char.IsDigit)
+                || !secondXBox.Text.All(Char.IsDigit) || !secondYBox.Text.All(Char.IsDigit))
+            {
+                MessageBox.Show("Enter digits only", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            int firstX = (int)Math.Round(float.Parse(firstXBox.Text));
+            int firstY = (int)Math.Round(float.Parse(firstYBox.Text));
+            int secondX = (int)Math.Round(float.Parse(secondXBox.Text));
+            int secondY = (int)Math.Round(float.Parse(secondYBox.Text));
+
             Point point1 = new Point(firstX, firstY);
             Point point2 = new Point(secondX, secondY);
             lines.Add(new Line(point1, point2, colorButton.ForeColor));
