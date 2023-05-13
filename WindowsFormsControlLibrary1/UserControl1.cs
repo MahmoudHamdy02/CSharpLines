@@ -260,6 +260,10 @@ namespace WindowsFormsControlLibrary1
         public Point Point2 { get => point2; set => point2 = value; }
         public Point Point1 { get => point1; set => point1 = value; }
 
-        //override tostring
+        public override string ToString()
+        {
+            return "First Point X: " + Point1.X + ", First Point Y: " + Point1.Y + 
+                ", Second Point X: " + Point2.X + ", Second Point Y: " + Point2.Y;
+        }
     }
 }
