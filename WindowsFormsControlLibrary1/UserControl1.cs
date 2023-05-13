@@ -146,6 +146,7 @@ namespace WindowsFormsControlLibrary1
                 lines.Add(new Line(clickedPoint1, clickedPoint2, colorButton.ForeColor));
 
                 dataGridView1.Rows.Add(clickedPoint1.X, clickedPoint1.Y, clickedPoint2.X, clickedPoint2.Y);
+                dataGridView1.Rows[dataGridView1.Rows.Count - 2].Cells[4].Style.BackColor = colorButton.ForeColor;
                 Refresh();
             }
         }
