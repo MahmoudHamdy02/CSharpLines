@@ -64,7 +64,7 @@ namespace WindowsFormsControlLibrary1
         private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
         {
             //Graphics graphics = this.splitContainer1.Panel2.CreateGraphics();
-            Pen pen = new Pen(Color.Black, 3);
+            Pen pen = new Pen(Color.Black, 2);
             foreach (var line in lines)
             {
                 System.Diagnostics.Debug.WriteLine("draw");
@@ -83,7 +83,7 @@ namespace WindowsFormsControlLibrary1
                 foreach (Point intersection in intersections)
                 {
                     //ToDO: maybe make 10 a function in window width
-                    e.Graphics.DrawEllipse(pen, intersection.X -  5, intersection.Y - 5, 10, 10);
+                    e.Graphics.DrawEllipse(pen, intersection.X -  10, intersection.Y - 10, 20, 20);
                 }
             }
 
