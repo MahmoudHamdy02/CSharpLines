@@ -130,7 +130,20 @@ namespace WindowsFormsControlLibrary1
 
         private void linesView_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // Get the index of the selected item
+            int selectedIndex = linesView.SelectedIndices.Count > 0 ? linesView.SelectedIndices[0] : -1;
 
+            // Check if selected item is in lines list
+            if (selectedIndex >= 0 && selectedIndex < lines.Count)
+            {
+                //update the textboxes and color button color
+                firstXBox.Text = lines.ElementAt(selectedIndex).Point1.X.ToString();
+                firstYBox.Text = lines.ElementAt(selectedIndex).Point1.Y.ToString();
+                secondXBox.Text = lines.ElementAt(selectedIndex).Point2.X.ToString();
+                secondYBox.Text = lines.ElementAt(selectedIndex).Point2.Y.ToString();
+                colorButton.ForeColor = lines.ElementAt(selectedIndex).Color;
+            }
+            //ToDo add error handling code in this case the else should never be reached
         }
 
         //the implementation is based on keeping the list in the same order as our internal line list
@@ -160,6 +173,21 @@ namespace WindowsFormsControlLibrary1
                 //update the drawing
                 this.Refresh();
             }
+        }
+
+        private void updateButton_Click(object sender, EventArgs e)
+        {
+            //update the coordinates with current coordinates and update color with current color
+            int selectedIndex = linesView.SelectedIndices.Count > 0 ? linesView.SelectedIndices[0] : -1;
+            if (selectedIndex >= 0 && selectedIndex < lines.Count)
+            {
+                lines.ElementAt(selectedIndex).Point1 = new Point(int.Parse(firstXBox.Text), int.Parse(firstYBox.Text));
+                lines.ElementAt(selectedIndex).Point2 = new Point(int.Parse(secondXBox.Text), int.Parse(secondYBox.Text));
+                if (colorButton.ForeColor != lines.ElementAt(selectedIndex).Color)
+                    lines.ElementAt(selectedIndex).Color = colorButton.ForeColor;
+            }
+            //update the drawing
+            this.Refresh();
         }
     }
 
