@@ -78,10 +78,12 @@ namespace WindowsFormsControlLibrary1
             //draw intersection if draw intersection was pressed
             if (drawIntersections)
             {
+                //reset pen color ot default black color
+                pen.Color = Color.Black;
                 foreach (Point intersection in intersections)
                 {
                     //ToDO: maybe make 10 a function in window width
-                    e.Graphics.DrawEllipse(pen, intersection.X, intersection.Y, 10, 10);
+                    e.Graphics.DrawEllipse(pen, intersection.X -  5, intersection.Y - 5, 10, 10);
                 }
             }
 
@@ -112,19 +114,29 @@ namespace WindowsFormsControlLibrary1
                     Point point3 = lines.ElementAt(j).Point1;
                     Point point4 = lines.ElementAt(j).Point2;
                     //check if parallel or coincident... denom is zero
-                    int denom = ((point1.X - point2.X) * (point3.Y - point4.Y)) - ((point1.Y - point2.Y) * (point3.X - point4.X));
-                    if (denom > 0)
+                    double denom = ((point1.X - point2.X) * (point3.Y - point4.Y)) - ((point1.Y - point2.Y) * (point3.X - point4.X));
+                    if (denom != 0)
                     {
                         //we have an intersection store it but first calc numerator1 and two
-                        int numeratorX = (
+                        double numeratorX = (
                                           ((point1.X * point2.Y) - (point1.Y * point2.X)) * (point3.X - point4.X)) -
                                           ((point1.X - point2.X) * ((point3.X * point4.Y) - (point3.Y * point4.X))
                                           );
-                        int numeratorY = (
+                        double numeratorY = (
                                           ((point1.X * point2.Y) - (point1.Y * point2.X)) * (point3.Y - point4.Y)) -
                                           ((point1.Y - point2.Y) * ((point3.X * point4.Y) - (point3.Y * point4.X))
                                           );
-                        intersections.Add(new Point((numeratorX / denom), (numeratorY / denom)));
+                        Point intersection = new Point((int)(numeratorX / denom), (int)(numeratorY / denom));
+                        // Check if the intersection point lies within the line segments
+                        if (intersection.X < Math.Min(point1.X, point2.X) || intersection.X > Math.Max(point1.X, point2.X) ||
+                            intersection.X < Math.Min(point3.X, point4.X) || intersection.X > Math.Max(point3.X, point4.X) ||
+                            intersection.Y < Math.Min(point1.Y, point2.Y) || intersection.Y > Math.Max(point1.Y, point2.Y) ||
+                            intersection.Y < Math.Min(point3.Y, point4.Y) || intersection.Y > Math.Max(point3.Y, point4.Y))
+                        {
+                            // The intersection point is outside the line segments, no intersection
+                            continue;
+                        }
+                        intersections.Add(intersection);
                     }
                 }
             }
@@ -231,6 +243,9 @@ namespace WindowsFormsControlLibrary1
                     linesView.Select(); // set focus to it
                 }
                 lines.RemoveAt(selectedIndex);
+                //call intersection calculations but first remove all intersections
+                intersections.Clear();
+                findIntersectionsButton_Click(sender, e);
                 //update the drawing
                 this.Refresh();
             }
