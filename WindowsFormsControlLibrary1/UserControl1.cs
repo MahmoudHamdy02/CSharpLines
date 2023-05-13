@@ -123,6 +123,9 @@ namespace WindowsFormsControlLibrary1
             {
                 lines.Remove(lines[index]);
                 dataGridView1.Rows.Remove(dataGridView1.CurrentRow);
+                //re calculate intersections
+                intersections = new HashSet<Point>();
+                findIntersectionsButton_Click(sender, e);
                 Refresh();
             }
         }
