@@ -223,8 +223,8 @@ namespace WindowsFormsControlLibrary1
 
         private void dataGridView1_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
         {
-            e.Row.Cells["colColor"].Style.BackColor = colorButton.ForeColor;
-            Refresh();
+            e.Row.Cells["colColor"].Style.BackColor = Color.Black;
+            Invalidate();
         }
     }
 
