@@ -24,15 +24,6 @@ namespace WindowsFormsControlLibrary1
             InitializeComponent();
             Paint += splitContainer1_Panel1_Paint;
             dataGridView1.Rows[0].Cells[4].Style.BackColor = Color.Black;
-            //this.Controls.Add(splitContainer1.Panel1);
-            //lines.Add(new Line(new Point(30, 20), new Point(10, 40)));
-        }
-
-
-
-        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
@@ -48,11 +39,10 @@ namespace WindowsFormsControlLibrary1
             //draw intersection if draw intersection was pressed
             if (drawIntersections)
             {
-                //reset pen color ot default black color
+                //reset pen color to default black color
                 pen.Color = Color.Black;
                 foreach (Point intersection in intersections)
                 {
-                    //ToDO: maybe make 10 a function in window width
                     e.Graphics.DrawEllipse(pen, intersection.X -  10, intersection.Y - 10, 20, 20);
                 }
             }
@@ -101,7 +91,7 @@ namespace WindowsFormsControlLibrary1
                     }
                 }
             }
-            this.Refresh();
+            Refresh();
         }
 
         private void colorButton_Click(object sender, EventArgs e)
@@ -139,7 +129,6 @@ namespace WindowsFormsControlLibrary1
 
         private void splitContainer1_Panel1_Click(object sender, EventArgs e)
         {
-
             if (!clickedOnce)
             {
                 clickedPoint1 = splitContainer1.Panel1.PointToClient(Cursor.Position);
@@ -154,13 +143,8 @@ namespace WindowsFormsControlLibrary1
                 lines.Add(new Line(clickedPoint1, clickedPoint2, colorButton.ForeColor));
 
                 dataGridView1.Rows.Add(clickedPoint1.X, clickedPoint1.Y, clickedPoint2.X, clickedPoint2.Y);
-                this.Refresh();
+                Refresh();
             }
-        }
-
-        private void tableLayoutPanel1_Paint_1(object sender, PaintEventArgs e)
-        {
-
         }
         private Color onColorCellClick()
         {
@@ -226,7 +210,7 @@ namespace WindowsFormsControlLibrary1
                 lines[e.RowIndex] = new Line(point1, point2, lineColor);
             }
 
-            this.Refresh();
+            Refresh();
         }
 
         private void dataGridView1_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)

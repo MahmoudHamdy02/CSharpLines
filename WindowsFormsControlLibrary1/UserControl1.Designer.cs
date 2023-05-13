@@ -32,13 +32,13 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.colorButton = new System.Windows.Forms.Button();
             this.removeButton = new System.Windows.Forms.Button();
-            this.findIntersectionsButton = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.colFirstX = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colFirstY = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSecondX = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSecondY = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.findIntersectionsButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -62,7 +62,6 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel1);
-            this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
             this.splitContainer1.Size = new System.Drawing.Size(1158, 577);
             this.splitContainer1.SplitterDistance = 731;
             this.splitContainer1.SplitterWidth = 3;
@@ -91,7 +90,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(420, 573);
             this.tableLayoutPanel1.TabIndex = 0;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint_1);
             // 
             // colorButton
             // 
@@ -118,19 +116,6 @@
             this.removeButton.Text = "Remove";
             this.removeButton.UseVisualStyleBackColor = true;
             this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
-            // 
-            // findIntersectionsButton
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.findIntersectionsButton, 2);
-            this.findIntersectionsButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.findIntersectionsButton.Location = new System.Drawing.Point(3, 288);
-            this.findIntersectionsButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.findIntersectionsButton.Name = "findIntersectionsButton";
-            this.findIntersectionsButton.Size = new System.Drawing.Size(162, 53);
-            this.findIntersectionsButton.TabIndex = 3;
-            this.findIntersectionsButton.Text = "Find Intersections";
-            this.findIntersectionsButton.UseVisualStyleBackColor = true;
-            this.findIntersectionsButton.Click += new System.EventHandler(this.findIntersectionsButton_Click);
             // 
             // dataGridView1
             // 
@@ -184,6 +169,19 @@
             this.colColor.HeaderText = "Color";
             this.colColor.MinimumWidth = 6;
             this.colColor.Name = "colColor";
+            // 
+            // findIntersectionsButton
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.findIntersectionsButton, 2);
+            this.findIntersectionsButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.findIntersectionsButton.Location = new System.Drawing.Point(3, 288);
+            this.findIntersectionsButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.findIntersectionsButton.Name = "findIntersectionsButton";
+            this.findIntersectionsButton.Size = new System.Drawing.Size(162, 53);
+            this.findIntersectionsButton.TabIndex = 3;
+            this.findIntersectionsButton.Text = "Find Intersections";
+            this.findIntersectionsButton.UseVisualStyleBackColor = true;
+            this.findIntersectionsButton.Click += new System.EventHandler(this.findIntersectionsButton_Click);
             // 
             // UserControl1
             // 
