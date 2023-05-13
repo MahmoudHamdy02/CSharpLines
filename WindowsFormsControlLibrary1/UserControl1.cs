@@ -23,6 +23,7 @@ namespace WindowsFormsControlLibrary1
         {
             InitializeComponent();
             Paint += splitContainer1_Panel1_Paint;
+            dataGridView1.Rows[0].Cells[4].Style.BackColor = Color.Black;
             //this.Controls.Add(splitContainer1.Panel1);
             //lines.Add(new Line(new Point(30, 20), new Point(10, 40)));
         }
@@ -63,13 +64,9 @@ namespace WindowsFormsControlLibrary1
         }
         private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
         {
-            //Graphics graphics = this.splitContainer1.Panel2.CreateGraphics();
             Pen pen = new Pen(Color.Black, 2);
             foreach (var line in lines)
             {
-                System.Diagnostics.Debug.WriteLine("draw");
-                System.Diagnostics.Debug.WriteLine(line.Point1);
-                System.Diagnostics.Debug.WriteLine(line.Point2);
                 //set the color to draw the line with
                 if (line.Color != pen.Color)
                     pen.Color = line.Color;
@@ -86,10 +83,6 @@ namespace WindowsFormsControlLibrary1
                     e.Graphics.DrawEllipse(pen, intersection.X -  10, intersection.Y - 10, 20, 20);
                 }
             }
-
-            //Point p1 = new Point(10, 10);
-            //Point p2 = new Point(50, 50);
-            //e.Graphics.DrawLine(pen, p1, p2);
         }
 
         private void textBox1_TextChanged_1(object sender, EventArgs e)
@@ -219,9 +212,16 @@ namespace WindowsFormsControlLibrary1
             //ToDo add error handling code in this case the else should never be reached
         }
 
+        private void removeButton_Click(object sender, EventArgs e)
+        {
+            lines.Remove(lines[dataGridView1.CurrentRow.Index]);
+            dataGridView1.Rows.Remove(dataGridView1.CurrentRow);
+            Refresh();
+        }
+
         //the implementation is based on keeping the list in the same order as our internal line list
         //To Do: add error messages
-        private void removeButton_Click(object sender, EventArgs e)
+        private void removeButton_Click2(object sender, EventArgs e)
         {
             // Get the index of the selected item
             int selectedIndex = linesView.SelectedIndices.Count > 0 ? linesView.SelectedIndices[0] : -1;
@@ -282,14 +282,98 @@ namespace WindowsFormsControlLibrary1
                 clickedOnce = false;
                 lines.Add(new Line(clickedPoint1, clickedPoint2, colorButton.ForeColor));
 
+                dataGridView1.Rows.Add(clickedPoint1.X, clickedPoint1.Y, clickedPoint2.X, clickedPoint2.Y);
                 //add to list
-                ListViewItem item = new ListViewItem();
-                item.Text = "First point (x=" + clickedPoint1.X + ",y=" + clickedPoint1.Y + ") Second point (x=" + clickedPoint2.X + ",y=" + clickedPoint2.Y + ")";
-                linesView.Items.Add(item);
+                //ListViewItem item = new ListViewItem();
+                //item.Text = "First point (x=" + clickedPoint1.X + ",y=" + clickedPoint1.Y + ") Second point (x=" + clickedPoint2.X + ",y=" + clickedPoint2.Y + ")";
+                //linesView.Items.Add(item);
 
                 //this.Invalidate();
                 this.Refresh();
             }
+        }
+
+        private void tableLayoutPanel1_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
+        private Color onColorCellClick()
+        {
+            ColorDialog colorDialog = new ColorDialog();
+
+            // Show the color dialog and capture the result
+            DialogResult result = colorDialog.ShowDialog();
+
+            // Check if the user clicked the OK button in the dialog
+            if (result == DialogResult.OK)
+            {
+                // Retrieve the selected color
+                Color selectedColor = colorDialog.Color;
+                return selectedColor;
+            }
+            return Color.Black;
+        }
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //Cursor.Current = Cursors.IBeam;
+            if (dataGridView1.CurrentCell.ColumnIndex.Equals(4))
+            {
+                Color c = onColorCellClick();
+                dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[dataGridView1.CurrentCell.ColumnIndex].Style.BackColor = c;
+                lines[dataGridView1.CurrentCell.RowIndex].Color = c;
+                Refresh();
+            }
+        }
+
+        private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("Done");
+            string x1 = Convert.ToString(dataGridView1.CurrentRow.Cells[0].Value);
+            string y1 = Convert.ToString(dataGridView1.CurrentRow.Cells[1].Value);
+            string x2 = Convert.ToString(dataGridView1.CurrentRow.Cells[2].Value);
+            string y2 = Convert.ToString(dataGridView1.CurrentRow.Cells[3].Value);
+            if (string.IsNullOrWhiteSpace(x1) || string.IsNullOrWhiteSpace(y1)
+                || string.IsNullOrWhiteSpace(x2) || string.IsNullOrWhiteSpace(y2))
+            {
+                return;
+            }
+            else if (!x1.All(Char.IsDigit) || !y1.All(Char.IsDigit)
+                || !x2.All(Char.IsDigit) || !y2.All(Char.IsDigit)) 
+            {
+                return;
+            }
+           
+            int firstX = Convert.ToInt32(x1);
+            int firstY = Convert.ToInt32(y1);
+            int secondX = Convert.ToInt32(x2);
+            int secondY = Convert.ToInt32(y2);
+
+            Point point1 = new Point(firstX, firstY);
+            Point point2 = new Point(secondX, secondY);
+            Color lineColor = dataGridView1.CurrentRow.Cells[4].Style.BackColor;
+            System.Diagnostics.Debug.WriteLine(lineColor);
+            if ((e.RowIndex + 1) > lines.Count)
+            {
+                lines.Add(new Line(point1, point2, lineColor));
+            }
+            else
+            {
+                lines[e.RowIndex] = new Line(point1, point2, lineColor);
+            }
+
+            //add to list
+            //ListViewItem item = new ListViewItem();
+            //item.Text = "First point (x=" + firstX + ",y=" + firstY + ") Second point (x=" + secondX + ",y=" + secondY + ")";
+            //linesView.Items.Add(item);
+
+            //this.Invalidate();
+            this.Refresh();
+        }
+
+        private void dataGridView1_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
+        {
+            e.Row.Cells["colColor"].Style.BackColor = Color.Black;
+            Invalidate();
         }
     }
 

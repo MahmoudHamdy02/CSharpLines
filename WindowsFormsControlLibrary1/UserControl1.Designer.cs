@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.linesView = new System.Windows.Forms.ListView();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.colorButton = new System.Windows.Forms.Button();
             this.updateButton = new System.Windows.Forms.Button();
@@ -42,12 +43,19 @@
             this.firstYBox = new System.Windows.Forms.TextBox();
             this.secondXBox = new System.Windows.Forms.TextBox();
             this.secondYBox = new System.Windows.Forms.TextBox();
-            this.linesView = new System.Windows.Forms.ListView();
             this.label2 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.colFirstX = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colFirstY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSecondX = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSecondY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -60,6 +68,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.linesView);
             this.splitContainer1.Panel1.Click += new System.EventHandler(this.splitContainer1_Panel1_Click);
             this.splitContainer1.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel1_Paint);
             // 
@@ -71,6 +80,15 @@
             this.splitContainer1.SplitterDistance = 731;
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // linesView
+            // 
+            this.linesView.HideSelection = false;
+            this.linesView.Location = new System.Drawing.Point(601, 270);
+            this.linesView.Name = "linesView";
+            this.linesView.Size = new System.Drawing.Size(121, 97);
+            this.linesView.TabIndex = 0;
+            this.linesView.UseCompatibleStateImageBehavior = false;
             // 
             // tableLayoutPanel1
             // 
@@ -92,8 +110,8 @@
             this.tableLayoutPanel1.Controls.Add(this.firstYBox, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.secondXBox, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.secondYBox, 3, 1);
-            this.tableLayoutPanel1.Controls.Add(this.linesView, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 0, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -105,7 +123,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 76F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(420, 573);
             this.tableLayoutPanel1.TabIndex = 0;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
+            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint_1);
             // 
             // colorButton
             // 
@@ -229,21 +247,6 @@
             this.secondYBox.Size = new System.Drawing.Size(75, 24);
             this.secondYBox.TabIndex = 10;
             // 
-            // linesView
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.linesView, 5);
-            this.linesView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.linesView.HideSelection = false;
-            this.linesView.Location = new System.Drawing.Point(3, 137);
-            this.linesView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.linesView.MultiSelect = false;
-            this.linesView.Name = "linesView";
-            this.linesView.Size = new System.Drawing.Size(414, 434);
-            this.linesView.TabIndex = 11;
-            this.linesView.UseCompatibleStateImageBehavior = false;
-            this.linesView.View = System.Windows.Forms.View.List;
-            this.linesView.SelectedIndexChanged += new System.EventHandler(this.linesView_SelectedIndexChanged);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -253,6 +256,59 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "First Y";
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colFirstX,
+            this.colFirstY,
+            this.colSecondX,
+            this.colSecondY,
+            this.colColor});
+            this.tableLayoutPanel1.SetColumnSpan(this.dataGridView1, 5);
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 138);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 26;
+            this.dataGridView1.Size = new System.Drawing.Size(414, 432);
+            this.dataGridView1.TabIndex = 11;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
+            this.dataGridView1.DefaultValuesNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.dataGridView1_DefaultValuesNeeded);
+            // 
+            // colFirstX
+            // 
+            this.colFirstX.HeaderText = "FirstX";
+            this.colFirstX.MinimumWidth = 6;
+            this.colFirstX.Name = "colFirstX";
+            // 
+            // colFirstY
+            // 
+            this.colFirstY.HeaderText = "FirstY";
+            this.colFirstY.MinimumWidth = 6;
+            this.colFirstY.Name = "colFirstY";
+            // 
+            // colSecondX
+            // 
+            this.colSecondX.HeaderText = "SecondX";
+            this.colSecondX.MinimumWidth = 6;
+            this.colSecondX.Name = "colSecondX";
+            // 
+            // colSecondY
+            // 
+            this.colSecondY.HeaderText = "SecondY";
+            this.colSecondY.MinimumWidth = 6;
+            this.colSecondY.Name = "colSecondY";
+            // 
+            // colColor
+            // 
+            this.colColor.HeaderText = "Color";
+            this.colColor.MinimumWidth = 6;
+            this.colColor.Name = "colColor";
+            // 
             // UserControl1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -261,11 +317,13 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "UserControl1";
             this.Size = new System.Drawing.Size(1158, 577);
+            this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -280,13 +338,19 @@
         private System.Windows.Forms.Button findIntersectionsButton;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox firstXBox;
         private System.Windows.Forms.TextBox firstYBox;
         private System.Windows.Forms.TextBox secondXBox;
         private System.Windows.Forms.TextBox secondYBox;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ListView linesView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colFirstX;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colFirstY;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSecondX;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSecondY;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colColor;
     }
 }
