@@ -76,30 +76,31 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.Controls.Add(this.colorButton, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.removeButton, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.findIntersectionsButton, 3, 2);
-            this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.colorButton, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.removeButton, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.findIntersectionsButton, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 76F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(420, 573);
             this.tableLayoutPanel1.TabIndex = 0;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint_1);
             // 
             // colorButton
             // 
+            this.tableLayoutPanel1.SetColumnSpan(this.colorButton, 2);
             this.colorButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.colorButton.Location = new System.Drawing.Point(3, 92);
+            this.colorButton.Location = new System.Drawing.Point(3, 2);
             this.colorButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.colorButton.Name = "colorButton";
-            this.colorButton.Size = new System.Drawing.Size(78, 41);
+            this.colorButton.Size = new System.Drawing.Size(162, 53);
             this.colorButton.TabIndex = 1;
             this.colorButton.Text = "Color";
             this.colorButton.UseVisualStyleBackColor = true;
@@ -107,11 +108,12 @@
             // 
             // removeButton
             // 
+            this.tableLayoutPanel1.SetColumnSpan(this.removeButton, 2);
             this.removeButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.removeButton.Location = new System.Drawing.Point(171, 92);
+            this.removeButton.Location = new System.Drawing.Point(171, 2);
             this.removeButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.removeButton.Name = "removeButton";
-            this.removeButton.Size = new System.Drawing.Size(78, 41);
+            this.removeButton.Size = new System.Drawing.Size(162, 53);
             this.removeButton.TabIndex = 2;
             this.removeButton.Text = "Remove";
             this.removeButton.UseVisualStyleBackColor = true;
@@ -121,10 +123,10 @@
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.findIntersectionsButton, 2);
             this.findIntersectionsButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.findIntersectionsButton.Location = new System.Drawing.Point(255, 92);
+            this.findIntersectionsButton.Location = new System.Drawing.Point(3, 288);
             this.findIntersectionsButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.findIntersectionsButton.Name = "findIntersectionsButton";
-            this.findIntersectionsButton.Size = new System.Drawing.Size(162, 41);
+            this.findIntersectionsButton.Size = new System.Drawing.Size(162, 53);
             this.findIntersectionsButton.TabIndex = 3;
             this.findIntersectionsButton.Text = "Find Intersections";
             this.findIntersectionsButton.UseVisualStyleBackColor = true;
@@ -142,12 +144,12 @@
             this.colColor});
             this.tableLayoutPanel1.SetColumnSpan(this.dataGridView1, 5);
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 138);
+            this.dataGridView1.Location = new System.Drawing.Point(3, 60);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 26;
-            this.dataGridView1.Size = new System.Drawing.Size(414, 432);
+            this.dataGridView1.Size = new System.Drawing.Size(414, 223);
             this.dataGridView1.TabIndex = 11;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);

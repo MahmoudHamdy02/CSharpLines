@@ -35,10 +35,6 @@ namespace WindowsFormsControlLibrary1
 
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
         private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
         {
             Pen pen = new Pen(Color.Black, 2);
